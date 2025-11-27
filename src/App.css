@@ -1,0 +1,62 @@
+/* 🎨 Pearl's personal style layer */
+
+/* Subtle fade-in animation for all sections */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out both;
+}
+
+/* Gentle underline that grows on hover for links */
+a {
+  position: relative;
+  text-decoration: none;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Optional — a glowing text class for headlines */
+.glow {
+  text-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+}
+
+/* Optional — smoother scrolling across the site */
+html {
+  scroll-behavior: smooth;
+  background-color: #fafafa;
+}
+
+section {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+h2 {
+  font-family: "Playfair Display", serif;
+}
+
+p {
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+}

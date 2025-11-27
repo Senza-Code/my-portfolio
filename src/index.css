@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  background-color: #ffffff;
+}
+body {
+  font-family: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+.h-crafted {
+  font-family: "Fraunces", serif;
+  letter-spacing: 0.2px;
+}
+
+/* subtle dotted grid background for Landing */
+.landing-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, black, rgba(0,0,0,0.5) 50%, transparent 85%);
+  pointer-events: none;
+}
+
+/* fade-up animation (Landing) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp .7s ease-out both; }
+.fade-up-1 { animation-delay: .05s; }
+.fade-up-2 { animation-delay: .15s; }
+.fade-up-3 { animation-delay: .25s; }
+.fade-up-4 { animation-delay: .35s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up, .fade-up-1, .fade-up-2, .fade-up-3, .fade-up-4 { animation: none; }
+}
+/* woven texture (subtle, accessible) */
+.village-weave {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(120, 113, 108, 0.06) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(0deg, rgba(120, 113, 108, 0.06) 0 1px, transparent 1px 10px);
+}
+
+/* soft “hills” backdrop using layered radial gradients (earthy greens) */
+.village-hills {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(60rem 30rem at 20% 100%, rgba(16, 185, 129, 0.10), transparent 60%),
+    radial-gradient(50rem 28rem at 90% 110%, rgba(5, 150, 105, 0.10), transparent 60%),
+    radial-gradient(40rem 26rem at 10% -10%, rgba(120, 53, 15, 0.08), transparent 55%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,1) 30%, rgba(0,0,0,1) 70%, rgba(0,0,0,0.6));
+}
+
+/* friendly chips for values */
+.chip {
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background: rgba(240, 253, 244, 0.9); /* emerald-50-ish */
+  border: 1px solid rgba(20, 83, 45, 0.18); /* emerald-800-ish */
+  color: rgb(30, 64, 46);
+}
+
+/* prefers-reduced-motion safety (animations are minimal here) */
+@media (prefers-reduced-motion: reduce) {
+  .village-hills, .village-weave { animation: none; }
+}
+/* woven underline for section headers */
+.village-weave-line {
+  height: 8px;
+  width: 160px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(120, 113, 108, 0.22);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(120,113,108,.08) 0 1px, transparent 1px 8px),
+    repeating-linear-gradient(0deg,  rgba(120,113,108,.08) 0 1px, transparent 1px 8px);
+}
+
+/* soft page fade on mount */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-in {
+  animation: pageIn .6s ease-out both;
+}
+
+/* clay-style card */
+.clay-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(120, 113, 108, 0.18); /* stone-ish */
+  box-shadow:
+    0 8px 24px rgba(20, 83, 45, 0.08),      /* emerald tint */
+    0 2px 6px rgba(2, 6, 23, 0.06);
+}
+
+/* gentle hover */
+.clay-card:hover {
+  transform: translateY(-2px);
+  transition: transform .18s ease;
+}
+
+/* museum background echo */
+.museum-hills {
+  width: 100%;
+  height: 100%;
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(60rem 30rem at 15% 95%, rgba(16,185,129,.09), transparent 60%),
+    radial-gradient(55rem 28rem at 85% 110%, rgba(5,150,105,.09), transparent 60%),
+    radial-gradient(40rem 24rem at 5% -10%, rgba(120,53,15,.06), transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+/* subtle vertical connector between entries */
+.timeline-connector {
+  width: 2px;
+  height: 36px;
+  background: linear-gradient(to bottom, rgba(120,113,108,.35), rgba(120,113,108,.08));
+  border-radius: 2px;
+}
+/* horizontal scrollbar polish */
+.timeline-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(15, 118, 110, 0.45) transparent; /* teal-ish */
+}
+.timeline-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+.timeline-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.timeline-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(15, 118, 110, 0.45);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
+}
