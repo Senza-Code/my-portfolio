@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const items = [
   {
@@ -67,3 +67,34 @@ function Placard({ item }) {
     </Wrapper>
   );
 }
+
+export default function Museum() {
+  const navigate = useNavigate();
+
+  return (
+    <main className="bg-white min-h-screen py-16">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex items-baseline justify-between mb-8">
+          <h2 className="text-3xl md:text-4xl text-slate-900">Collections</h2>
+          <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
+            Exhibits 001–003
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {items.map((it) => (
+            <Placard key={it.code} item={it} />
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <button
+            onClick={() => navigate("/")}
+            className="px-6 py-2 rounded-full bg-emerald-600 text-white text-sm hover:bg-emerald-700"
+          >
+            ← Back Home
+          </button>
+        </div>
+      </div>
+    </main>
+  );
+}
+
